@@ -31,7 +31,7 @@ def setup() -> Optional[Tello]:
     return tello
 
 
-def simple_flight_path(tello: Optional[Tello], dist: int = 10) -> None:
+def simple_flight_path(tello: Optional[Tello], dist: int = 20) -> None:
     """Execute a short, simple flight path.
 
     The routine is defensive: it returns immediately if ``tello`` is
