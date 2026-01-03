@@ -52,21 +52,23 @@ def simple_flight_path(tello: Optional[Tello], dist: int = 20) -> None:
         sleep(2)
 
         # x-axis movement
-        tello.move_left(dist)
+        tello.move_left(dist) # left
         sleep(1)
-        tello.move_right(dist)
+        tello.move_right(dist) # right
         sleep(1)
 
         # y-axis movement
-        tello.move_forward(dist)
+        tello.move_forward(dist) # forward
         sleep(1)
-        tello.move_back(dist)
+        tello.move_back(dist) # back
         sleep(1)
 
         # z-axis movement (use smaller steps for safety)
-        tello.move_up(dist // 2)
+        if dist >= 40:
+          dist = dist / 2
+        tello.move_up(dist) # up
         sleep(1)
-        tello.move_down(dist // 2)
+        tello.move_down(dist) # down
         sleep(1)
 
         tello.land()
@@ -86,7 +88,7 @@ if __name__ == "__main__":
         print("Setup failed; exiting.")
     else:
         try:
-            simple_flight_path(tello, 15)
+            simple_flight_path(tello, 15) # call flight function
         except Exception as exc:
             print("Unhandled error in __main__:\n", exc)
         finally:
